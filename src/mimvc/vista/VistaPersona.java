@@ -292,7 +292,7 @@ public class VistaPersona extends javax.swing.JFrame {
 
         btnEditar.setText("Editar");
 
-        btnRemover.setText("Remover");
+        btnRemover.setText("Quitar");
 
         bntListar.setText("Listar");
 
@@ -315,7 +315,7 @@ public class VistaPersona extends javax.swing.JFrame {
                 .addComponent(btnRemover)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntListar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                 .addComponent(btnImprimir)
                 .addContainerGap())
         );
