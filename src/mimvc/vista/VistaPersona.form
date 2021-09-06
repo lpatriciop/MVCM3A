@@ -296,7 +296,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblMensajes">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sistema 1.0"/>
+            <Property name="text" type="java.lang.String" value="Sistema Beta 1.0"/>
           </Properties>
         </Component>
       </SubComponents>
