@@ -18,11 +18,15 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.ws.Holder;
 import mimvc.modelo.ModeloPersona;
 import mimvc.modelo.Persona;
 import mimvc.vista.VistaPersona;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -39,7 +43,7 @@ public class ControlPersona {
         vista.setTitle("CRUD PERSONAS");
         vista.getLblMensajes().setText("Bienvienidos Sistema 1.0");
         vista.setVisible(true);
-        cargaLista();
+        cargaLista("");
     }
     
     public void iniciaControl(){
@@ -61,7 +65,7 @@ public class ControlPersona {
             }
         };
         
-     vista.getBntListar().addActionListener(l->cargaLista());
+     vista.getBntListar().addActionListener(l->cargaLista(""));
      vista.getBntCrear().addActionListener(l->cargaDialogo(1));
      vista.getBtnEditar().addActionListener(l->cargaDialogo(2));
      vista.getBtnAceptar().addActionListener(l->grabaPersona());
@@ -71,27 +75,50 @@ public class ControlPersona {
      
     }
     
-    private void cargaLista(){
-    //Carga datos a la vista.
-        DefaultTableModel tablaMd;
-        tablaMd=(DefaultTableModel)vista.getTblPersonas().getModel();
-        tablaMd.setNumRows(0);
-        List<Persona> lista=modelo.listarPersonas();
-        lista.stream().forEach(per->{
-         String[] fila={per.getIdPersona(),per.getNombres(),per.getApellidos()};
-         tablaMd.addRow(fila);
-        });
-        
-    }
+//    private void cargaLista(){
+//    //Carga datos a la vista.
+//        DefaultTableModel tablaMd;
+//        tablaMd=(DefaultTableModel)vista.getTblPersonas().getModel();
+//        tablaMd.setNumRows(0);
+//        List<Persona> lista=modelo.listarPersonas("");
+//        lista.stream().forEach(per->{
+//         String[] fila={per.getIdPersona(),per.getNombres(),per.getApellidos()};
+//         tablaMd.addRow(fila);
+//        });
+//        
+//    }
     private void cargaLista(String aguja){
     //Carga datos a la vista.
+    
+        vista.getTblPersonas().setDefaultRenderer(Object.class, new ImagenTabla());
+        vista.getTblPersonas().setRowHeight(100);
+        DefaultTableCellRenderer render = new DefaultTableCellHeaderRenderer();
         DefaultTableModel tablaMd;
         tablaMd=(DefaultTableModel)vista.getTblPersonas().getModel();
         tablaMd.setNumRows(0);
         List<Persona> lista=modelo.listarPersonas(aguja);
+        int ncols=tablaMd.getColumnCount();
+        Holder<Integer> i = new Holder<>(0);
         lista.stream().forEach(per->{
-         String[] fila={per.getIdPersona(),per.getNombres(),per.getApellidos()};
-         tablaMd.addRow(fila);
+           tablaMd.addRow(new Object[ncols]);
+           vista.getTblPersonas().setValueAt(per.getIdPersona(), i.value, 0);
+           vista.getTblPersonas().setValueAt(per.getNombres(), i.value, 1);
+           
+           
+           Image img =per.getFoto();
+           
+           if(img!=null){
+             Image nimg=img.getScaledInstance(100, 100,  Image.SCALE_SMOOTH);
+             ImageIcon icon = new ImageIcon(nimg);
+             render.setIcon(icon);
+             vista.getTblPersonas().setValueAt(new JLabel(icon), i.value, 3);
+           }else{
+            vista.getTblPersonas().setValueAt(null, i.value, 3);
+           }
+           
+           i.value++; 
+//         String[] fila={per.getIdPersona(),per.getNombres(),per.getApellidos()};
+//         tablaMd.addRow(fila);
         });
         
     }
@@ -118,7 +145,7 @@ public class ControlPersona {
         
         if(modelo.grabar()){
             JOptionPane.showMessageDialog(vista, "Persona Creada Satisfactoriamente");
-            cargaLista();
+            cargaLista("");
         }else{
             JOptionPane.showMessageDialog(vista, "ERROR");
         }

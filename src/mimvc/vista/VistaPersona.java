@@ -354,13 +354,13 @@ public class VistaPersona extends javax.swing.JFrame {
 
         tblPersonas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "CODIGO", "NOMBRES", "APELLIDOS"
+                "CODIGO", "NOMBRES", "APELLIDOS", "FOTO"
             }
         ));
         jScrollPane1.setViewportView(tblPersonas);
