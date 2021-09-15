@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -45,8 +46,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         lblMensajesEstado = new javax.swing.JLabel();
         dktPrincipal = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
-        mnuManPersonas = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MenuPrin = new javax.swing.JMenu();
+        mnuManPersonas = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -127,24 +128,24 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGap(0, 337, Short.MAX_VALUE)
         );
 
-        mnuManPersonas.setText("Personas");
+        MenuPrin.setText("Personas");
 
-        jMenuItem1.setText("Mantenimiento Personas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuManPersonas.setText("Mantenimiento Personas");
+        mnuManPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuManPersonasActionPerformed(evt);
             }
         });
-        mnuManPersonas.add(jMenuItem1);
+        MenuPrin.add(mnuManPersonas);
 
         jMenuItem2.setText("Reporte de Personas");
-        mnuManPersonas.add(jMenuItem2);
-        mnuManPersonas.add(jSeparator1);
+        MenuPrin.add(jMenuItem2);
+        MenuPrin.add(jSeparator1);
 
         jMenuItem3.setText("Salir");
-        mnuManPersonas.add(jMenuItem3);
+        MenuPrin.add(jMenuItem3);
 
-        jMenuBar2.add(mnuManPersonas);
+        jMenuBar2.add(MenuPrin);
 
         jMenu4.setText("Edit");
         jMenuBar2.add(jMenu4);
@@ -172,9 +173,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mnuManPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuManPersonasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuManPersonasActionPerformed
 
     public JDesktopPane getDktPrincipal() {
         return dktPrincipal;
@@ -192,13 +193,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.lblMensajesEstado = lblMensajesEstado;
     }
 
-    public JMenu getMnuManPersonas() {
+    public JMenuItem getMnuManPersonas() {
         return mnuManPersonas;
     }
 
-    public void setMnuManPersonas(JMenu mnuManPersonas) {
+    public void setMnuManPersonas(JMenuItem mnuManPersonas) {
         this.mnuManPersonas = mnuManPersonas;
     }
+
+   
 
     public JButton getTlbManPersonas() {
         return tlbManPersonas;
@@ -211,6 +214,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuPrin;
     private javax.swing.JDesktopPane dktPrincipal;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -220,7 +224,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel2;
@@ -228,7 +231,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel lblMensajesEstado;
-    private javax.swing.JMenu mnuManPersonas;
+    private javax.swing.JMenuItem mnuManPersonas;
     private javax.swing.JButton tlbManPersonas;
     // End of variables declaration//GEN-END:variables
 }
