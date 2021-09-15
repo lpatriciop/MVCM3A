@@ -40,7 +40,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton7 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblMensajesEstado = new javax.swing.JLabel();
@@ -95,10 +94,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar2.add(jButton6);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enviar Catalogo Correo", "Enviar Catalogo Grupo" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(40, 20));
-        jToolBar2.add(jComboBox1);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mimvc/vista/icons/arrow_next.png"))); // NOI18N
         jButton7.setFocusable(false);
@@ -223,7 +218,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
