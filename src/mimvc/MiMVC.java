@@ -5,9 +5,9 @@
  */
 package mimvc;
 
-import mimvc.controlador.ControlPersona;
-import mimvc.modelo.ModeloPersona;
-import mimvc.vista.VistaPersona;
+import mimvc.controlador.ControlPrincipal;
+import mimvc.vista.VistaPrincipal;
+
 
 /**
  *
@@ -20,10 +20,10 @@ public class MiMVC {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ModeloPersona m=new ModeloPersona();
-        VistaPersona v = new VistaPersona();
-        ControlPersona c=new ControlPersona(m, v);
-        c.iniciaControl();
+        VistaPrincipal vista = new VistaPrincipal();
+        
+        ControlPrincipal control = new ControlPrincipal(vista);
+        control.iniciaControl();
         
     }
     
