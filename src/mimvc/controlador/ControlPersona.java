@@ -23,9 +23,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
+import mimvc.modelo.ConexionPG;
 import mimvc.modelo.ModeloPersona;
 import mimvc.modelo.Persona;
 import mimvc.vista.VistaPersona;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
@@ -72,21 +79,24 @@ public class ControlPersona {
      vista.getBtnExaminar().addActionListener(l->examinarFoto());
      //KeyListener
      vista.getTxtBuscar().addKeyListener(kl);
-     
+     //Impresion
+     vista.getBtnImprimir().addActionListener(l->imprimirPersonas());
     }
     
-//    private void cargaLista(){
-//    //Carga datos a la vista.
-//        DefaultTableModel tablaMd;
-//        tablaMd=(DefaultTableModel)vista.getTblPersonas().getModel();
-//        tablaMd.setNumRows(0);
-//        List<Persona> lista=modelo.listarPersonas("");
-//        lista.stream().forEach(per->{
-//         String[] fila={per.getIdPersona(),per.getNombres(),per.getApellidos()};
-//         tablaMd.addRow(fila);
-//        });
-//        
-//    }
+    //REPORTES EN JASPERS STUDIO
+    private void imprimirPersonas(){
+    
+        ConexionPG con= new ConexionPG();
+        try {
+            JasperReport jr=(JasperReport) JRLoader.loadObject(getClass().getResource("/mimvc/vista/reportes/Lista_Personas.jasper"));
+            JasperPrint jp =JasperFillManager.fillReport(jr, null,con.getCon());
+            JasperViewer jv=new JasperViewer(jp);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControlPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     private void cargaLista(String aguja){
     //Carga datos a la vista.
     

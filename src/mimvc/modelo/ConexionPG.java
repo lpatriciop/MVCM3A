@@ -65,5 +65,11 @@ public class ConexionPG {
         }
         
     }
+
+    public Connection getCon() {
+        return con;
+    }
+
+  
     
 }
